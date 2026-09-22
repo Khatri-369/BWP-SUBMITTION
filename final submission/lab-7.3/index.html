@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 7.3 - Book Collection XML & XSD Schema</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            padding: 30px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #28a745;
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #28a745;
+            color: #ffffff;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>📚 Book Collection (XML & XSD Schema)</h2>
+        <p style="text-align: center; color: #666;">Data loaded from <code>books.xml</code> validated against <code>books.xsd</code> schema.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Book Name</th>
+                    <th>Author</th>
+                    <th>ISBN Number</th>
+                    <th>Quantity</th>
+                </tr>
+            </thead>
+            <tbody id="bookTableBody">
+                <tr>
+                    <td colspan="4">Loading XML data...</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        function loadXML() {
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "books.xml", true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    var xmlDoc = xhr.responseXML;
+                    var books = xmlDoc.getElementsByTagName("book");
+                    var html = "";
+
+                    for (var i = 0; i < books.length; i++) {
+                        var name = books[i].getElementsByTagName("book-name")[0].childNodes[0].nodeValue;
+                        var author = books[i].getElementsByTagName("author")[0].childNodes[0].nodeValue;
+                        var isbn = books[i].getElementsByTagName("isbn")[0].childNodes[0].nodeValue;
+                        var qty = books[i].getElementsByTagName("quantity")[0].childNodes[0].nodeValue;
+
+                        html += "<tr>";
+                        html += "<td style='text-align: left;'><strong>" + name + "</strong></td>";
+                        html += "<td>" + author + "</td>";
+                        html += "<td><code>" + isbn + "</code></td>";
+                        html += "<td><strong>" + qty + "</strong></td>";
+                        html += "</tr>";
+                    }
+
+                    document.getElementById("bookTableBody").innerHTML = html;
+                }
+            };
+            xhr.send();
+        }
+
+        window.onload = loadXML;
+    </script>
+
+</body>
+</html>

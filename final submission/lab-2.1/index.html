@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Static Website Layout - Lab 2.1</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .site-container {
+            width: 850px;
+            border: 2px solid #000000;
+            background-color: #ffffff;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        /* Top Header */
+        .site-header {
+            background-color: #5b9bd5;
+            color: #ffffff;
+            text-align: center;
+            padding: 22px 10px;
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            border-bottom: 2px solid #000000;
+        }
+
+        /* Body Split: Sidebar + Content Frame */
+        .site-body {
+            display: flex;
+            min-height: 460px;
+        }
+
+        /* Left Blue Sidebar */
+        .site-sidebar {
+            width: 220px;
+            background-color: #5b9bd5;
+            padding: 30px 20px;
+            box-sizing: border-box;
+            border-right: 2px solid #000000;
+        }
+
+        .site-sidebar a {
+            display: block;
+            color: #ffffff;
+            font-size: 16px;
+            text-decoration: none;
+            margin-bottom: 18px;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: background-color 0.2s, color 0.2s;
+        }
+
+        .site-sidebar a:hover,
+        .site-sidebar a.active {
+            background-color: #3b74aa;
+            text-decoration: underline;
+        }
+
+        /* Right Content Area */
+        .site-content {
+            flex: 1;
+            background-color: #ffffff;
+            padding: 0;
+        }
+
+        iframe.content-frame {
+            width: 100%;
+            height: 100%;
+            min-height: 460px;
+            border: none;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="site-container">
+        <!-- HEADER Section -->
+        <div class="site-header">
+            HEADER
+        </div>
+
+        <div class="site-body">
+            <!-- Left Sidebar Navigation -->
+            <div class="site-sidebar">
+                <a href="Home.html" target="content-frame" class="active" onclick="setActive(this)">Home</a>
+                <a href="About.html" target="content-frame" onclick="setActive(this)">About Me</a>
+                <a href="Contact.html" target="content-frame" onclick="setActive(this)">Contact us</a>
+            </div>
+
+            <!-- Right Content Area (Loads Home.html by default) -->
+            <div class="site-content">
+                <iframe name="content-frame" class="content-frame" src="Home.html"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function setActive(element) {
+            const links = document.querySelectorAll('.site-sidebar a');
+            links.forEach(link => link.classList.remove('active'));
+            element.classList.add('active');
+        }
+    </script>
+
+</body>
+</html>

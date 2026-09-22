@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employment Application Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        .form-container {
+            width: 780px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border: 2px solid #000000;
+            padding: 10px;
+        }
+
+        h2.title {
+            text-align: center;
+            font-weight: bold;
+            font-size: 22px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .blue-header {
+            background-color: #0073cb;
+            color: #ffffff;
+            text-align: center;
+            font-weight: bold;
+            padding: 8px;
+            font-size: 13px;
+        }
+
+        .grey-header {
+            background-color: #e6e6e6;
+            text-align: center;
+            font-weight: bold;
+            padding: 6px;
+            font-size: 13px;
+            border-top: 1px solid #000;
+            border-bottom: 1px solid #000;
+        }
+
+        table.form-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table.form-table td, table.form-table th {
+            border: 1px solid #000000;
+            padding: 6px;
+            font-size: 13px;
+            vertical-align: top;
+        }
+
+        .sub-label {
+            display: flex;
+            justify-content: space-around;
+            font-size: 11px;
+            color: #333333;
+            margin-top: 4px;
+        }
+
+        input[type="text"], input[type="date"], input[type="number"] {
+            width: 95%;
+            border: none;
+            border-bottom: 1px solid #999;
+            outline: none;
+            font-size: 13px;
+            background: transparent;
+        }
+
+        .days-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5px;
+            font-size: 12px;
+        }
+
+        .section-title-bg {
+            background-color: #dcdcdc;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        
+        <h2 class="title">EMPLOYMENT APPLICATION FORM</h2>
+
+        <div class="blue-header">
+            PLEASE PRINT ALL INFORMATION REQUESTED EXCEPT SIGNATURE
+        </div>
+
+        <table class="form-table">
+            <tr>
+                <td colspan="2" class="text-center fw-bold" style="text-align: center;">
+                    <strong>APPLICANTS MAY BE TESTED FOR ILLEGAL DRUGS</strong>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 70%;">
+                    <strong>PLEASE COMPLETE PAGES 1-5.</strong>
+                </td>
+                <td style="width: 30%;">
+                    <strong>Date:</strong> <input type="date">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <strong>Name:</strong> <input type="text" placeholder="Enter Full Name">
+                    <div class="sub-label">
+                        <span>Last</span>
+                        <span>First</span>
+                        <span>Middle</span>
+                        <span>Maiden</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <strong>Present Address:</strong> <input type="text">
+                    <div class="sub-label">
+                        <span>Number</span>
+                        <span>Street</span>
+                        <span>City</span>
+                        <span>State</span>
+                        <span>Zip</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>How Long:</strong> <input type="text">
+                </td>
+                <td>
+                    <strong>Social Security No.:</strong> <input type="text">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <strong>Telephone:</strong> <input type="text">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <strong>If under 18, please list age:</strong> <input type="number" style="width: 100px;">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>Position Applied For:</strong> <input type="text"><br><br>
+                    <strong>Salary Desired:</strong> <input type="text">
+                </td>
+                <td>
+                    <strong>Days/Hours Available to Work:</strong>
+                    <div class="days-grid" style="margin-top: 5px;">
+                        <div>No Pref <input type="text" style="width: 60px;"></div>
+                        <div>Thur <input type="text" style="width: 60px;"></div>
+                        <div>Mon <input type="text" style="width: 60px;"></div>
+                        <div>Fri <input type="text" style="width: 60px;"></div>
+                        <div>Tue <input type="text" style="width: 60px;"></div>
+                        <div>Sat <input type="text" style="width: 60px;"></div>
+                        <div>Wed <input type="text" style="width: 60px;"></div>
+                        <div>Sun <input type="text" style="width: 60px;"></div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>How many hours can you work weekly?</strong> <input type="text">
+                </td>
+                <td>
+                    <strong>Can you work nights?</strong> <input type="text">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <strong>Employment Desired:</strong> &nbsp;&nbsp;
+                    <input type="radio" name="emp_type" id="ft"> <label for="ft">FULL-TIME ONLY</label> &nbsp;&nbsp;
+                    <input type="radio" name="emp_type" id="pt"> <label for="pt">PART-TIME ONLY</label> &nbsp;&nbsp;
+                    <input type="radio" name="emp_type" id="fpt"> <label for="fpt">FULL- OR PART-TIME</label>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <strong>When available for work?</strong> <input type="text">
+                </td>
+            </tr>
+        </table>
+
+        <!-- Education Section Header -->
+        <div class="grey-header">
+            EDUCATION & OTHER INFORMATION
+        </div>
+
+        <!-- Education Table -->
+        <table class="form-table">
+            <tr style="text-align: center; font-weight: bold; background-color: #f0f0f0;">
+                <td style="width: 20%;">TYPE OF SCHOOL</td>
+                <td style="width: 20%;">NAME OF SCHOOL</td>
+                <td style="width: 25%;">LOCATION<br>(Complete mailing address)</td>
+                <td style="width: 15%;">NO. OF YEARS COMPLETED</td>
+                <td style="width: 20%;">MAJOR & DEGREE</td>
+            </tr>
+            <tr>
+                <td class="section-title-bg">High School</td>
+                <td><input type="text"></td>
+                <td><input type="text"></td>
+                <td><input type="text"></td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td class="section-title-bg">College</td>
+                <td><input type="text"></td>
+                <td><input type="text"></td>
+                <td><input type="text"></td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td class="section-title-bg">Bus. or Trade School</td>
+                <td><input type="text"></td>
+                <td><input type="text"></td>
+                <td><input type="text"></td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td class="section-title-bg">Professional School</td>
+                <td><input type="text"></td>
+                <td><input type="text"></td>
+                <td><input type="text"></td>
+                <td><input type="text"></td>
+            </tr>
+        </table>
+
+    </div>
+
+</body>
+</html>

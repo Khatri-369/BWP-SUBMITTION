@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 6.1 - Stock Market AJAX</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121824;
+            color: #ffffff;
+            padding: 40px;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            background-color: #1e2638;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        h2 {
+            text-align: center;
+            color: #00d2ff;
+            margin-top: 0;
+        }
+
+        .btn-box {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        button {
+            background-color: #00d2ff;
+            color: #121824;
+            border: none;
+            padding: 12px 24px;
+            font-size: 15px;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        button:hover {
+            background-color: #0099cc;
+            color: #ffffff;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #2d3850;
+        }
+
+        th {
+            background-color: #161d2d;
+            color: #8f9bba;
+            font-size: 13px;
+            text-transform: uppercase;
+        }
+
+        .up {
+            color: #00e676;
+            font-weight: bold;
+        }
+
+        .down {
+            color: #ff5252;
+            font-weight: bold;
+        }
+
+        .status-badge {
+            font-size: 12px;
+            padding: 3px 8px;
+            border-radius: 3px;
+        }
+
+        .bg-up { background-color: rgba(0, 230, 118, 0.2); }
+        .bg-down { background-color: rgba(255, 82, 82, 0.2); }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>📈 Live Stock Market (AJAX)</h2>
+        <p style="text-align: center; color: #8f9bba; font-size: 14px;">Stock prices loaded dynamically from <code>stocks.txt</code> using AJAX (XMLHttpRequest).</p>
+
+        <div class="btn-box">
+            <button onclick="loadStockPrices()">🔄 Fetch Stock Prices via AJAX</button>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Stock Symbol</th>
+                    <th>Price</th>
+                    <th>Change (%)</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody id="stockTableBody">
+                <tr>
+                    <td colspan="4" style="text-align: center; color: #8f9bba;">Click button to load stock data via AJAX...</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        function loadStockPrices() {
+            // Create AJAX XMLHttpRequest Object
+            var xhr = new XMLHttpRequest();
+
+            // Open request to fetch stocks.txt
+            xhr.open("GET", "stocks.txt", true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    var textData = xhr.responseText;
+                    var lines = textData.trim().split("\n");
+                    var html = "";
+
+                    for (var i = 0; i < lines.length; i++) {
+                        var parts = lines[i].split("|");
+                        if (parts.length >= 4) {
+                            var symbol = parts[0].trim();
+                            var price = parts[1].trim();
+                            var change = parts[2].trim();
+                            var status = parts[3].trim();
+
+                            var isUp = change.includes("+");
+                            var colorClass = isUp ? "up" : "down";
+                            var bgClass = isUp ? "bg-up" : "bg-down";
+
+                            html += "<tr>";
+                            html += "<td><strong>" + symbol + "</strong></td>";
+                            html += "<td>" + price + "</td>";
+                            html += "<td class='" + colorClass + "'>" + change + "</td>";
+                            html += "<td><span class='status-badge " + colorClass + " " + bgClass + "'>" + status + "</span></td>";
+                            html += "</tr>";
+                        }
+                    }
+
+                    document.getElementById("stockTableBody").innerHTML = html;
+                }
+            };
+
+            // Send AJAX request
+            xhr.send();
+        }
+
+        // Auto load on page visit
+        window.onload = loadStockPrices;
+    </script>
+
+</body>
+</html>

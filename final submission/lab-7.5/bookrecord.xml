@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="bookrecord.xsl"?>
+<bookstore>
+    <book category="Programming">
+        <title lang="en">Java: The Complete Reference</title>
+        <author>Herbert Schildt</author>
+        <year>2021</year>
+        <price>650</price>
+        <publisher>McGraw-Hill</publisher>
+    </book>
+    <book category="Web Development">
+        <title lang="en">HTML &amp; CSS: Design and Build Websites</title>
+        <author>Jon Duckett</author>
+        <year>2018</year>
+        <price>480</price>
+        <publisher>Wiley</publisher>
+    </book>
+    <book category="Database">
+        <title lang="en">Learning SQL</title>
+        <author>Alan Beaulieu</author>
+        <year>2020</year>
+        <price>390</price>
+        <publisher>O'Reilly</publisher>
+    </book>
+    <book category="Algorithms">
+        <title lang="en">Data Structures &amp; Algorithms in Python</title>
+        <author>Michael T. Goodrich</author>
+        <year>2019</year>
+        <price>540</price>
+        <publisher>Wiley</publisher>
+    </book>
+</bookstore>

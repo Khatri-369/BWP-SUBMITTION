@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 4.6 - Snowfall Animation</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background: linear-gradient(to bottom, #020b18 0%, #0a2342 100%);
+            font-family: Arial, sans-serif;
+            color: #ffffff;
+        }
+
+        canvas {
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+
+        .content-overlay {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            margin-top: 50px;
+            pointer-events: none;
+        }
+
+        h1 {
+            font-size: 3rem;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 1.2rem;
+            color: #d0e8ff;
+        }
+
+        .controls {
+            pointer-events: auto;
+            margin-top: 20px;
+        }
+
+        button {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            border: 1px solid #ffffff;
+            padding: 10px 20px;
+            font-size: 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            margin: 0 8px;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s;
+        }
+
+        button:hover {
+            background-color: #ffffff;
+            color: #020b18;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HTML5 Canvas for Snowfall -->
+    <canvas id="snowCanvas"></canvas>
+
+    <!-- Overlay Text & Controls -->
+    <div class="content-overlay">
+        <h1>❄ Snowfall Demonstration ❄</h1>
+        <p>Interactive Snowfall Effect Created using JavaScript & Canvas</p>
+
+        <div class="controls">
+            <button onclick="toggleSnow()">Pause / Resume</button>
+            <button onclick="addFlakes()">Add More Snow</button>
+        </div>
+    </div>
+
+    <script>
+        var canvas = document.getElementById("snowCanvas");
+        var ctx = canvas.getContext("2d");
+
+        // Resize Canvas to Window
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener("resize", resizeCanvas);
+
+        // Snowflake Array
+        var snowflakes = [];
+        var maxSnowflakes = 150;
+        var isPaused = false;
+
+        // Initialize Snowflakes
+        function createSnowflake() {
+            return {
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                radius: Math.random() * 4 + 1,
+                density: Math.random() * maxSnowflakes,
+                speed: Math.random() * 2 + 0.5,
+                opacity: Math.random() * 0.8 + 0.2,
+                swing: Math.random() * 0.05
+            };
+        }
+
+        for (var i = 0; i < maxSnowflakes; i++) {
+            snowflakes.push(createSnowflake());
+        }
+
+        var angle = 0;
+
+        // Draw Snowflakes
+        function drawSnowflakes() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            for (var i = 0; i < snowflakes.length; i++) {
+                var flake = snowflakes[i];
+
+                ctx.beginPath();
+                ctx.arc(flake.x, flake.y, flake.radius, 0, Math.PI * 2, false);
+                ctx.fillStyle = "rgba(255, 255, 255, " + flake.opacity + ")";
+                ctx.shadowBlur = 5;
+                ctx.shadowColor = "#ffffff";
+                ctx.fill();
+            }
+        }
+
+        // Update Snowflakes Position
+        function updateSnowflakes() {
+            angle += 0.01;
+
+            for (var i = 0; i < snowflakes.length; i++) {
+                var flake = snowflakes[i];
+
+                // Vertical falling & horizontal gentle sway
+                flake.y += flake.speed;
+                flake.x += Math.sin(angle + flake.density) * 0.8;
+
+                // Reset snowflake to top when it reaches bottom
+                if (flake.y > canvas.height) {
+                    snowflakes[i] = {
+                        x: Math.random() * canvas.width,
+                        y: 0,
+                        radius: flake.radius,
+                        density: flake.density,
+                        speed: flake.speed,
+                        opacity: flake.opacity,
+                        swing: flake.swing
+                    };
+                }
+            }
+        }
+
+        // Animation Loop
+        function animate() {
+            if (!isPaused) {
+                drawSnowflakes();
+                updateSnowflakes();
+            }
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+
+        // Control Functions
+        function toggleSnow() {
+            isPaused = !isPaused;
+        }
+
+        function addFlakes() {
+            for (var i = 0; i < 50; i++) {
+                snowflakes.push(createSnowflake());
+            }
+        }
+    </script>
+
+</body>
+</html>

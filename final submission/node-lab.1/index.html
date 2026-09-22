@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab Node-1 - Area Calculation Module</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            padding: 40px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #007bff;
+            text-align: center;
+        }
+
+        .form-section {
+            margin-bottom: 20px;
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 6px;
+            border-left: 4px solid #007bff;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 100px;
+            padding: 6px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .result {
+            margin-top: 10px;
+            font-weight: bold;
+            color: #28a745;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>📐 Area Calculation Module Demo</h2>
+        <p style="text-align: center; color: #666; font-size: 14px;">Demonstrating Node.js module functions for Circle, Rectangle, and Square.</p>
+
+        <!-- Circle Section -->
+        <div class="form-section">
+            <label>Circle Area</label>
+            Radius (r): <input type="number" id="radius" value="7">
+            <button onclick="calcCircle()">Calculate</button>
+            <div id="circleRes" class="result">Result: 153.94 sq units</div>
+        </div>
+
+        <!-- Rectangle Section -->
+        <div class="form-section">
+            <label>Rectangle Area</label>
+            Length: <input type="number" id="length" value="10"> &nbsp;
+            Width: <input type="number" id="width" value="5">
+            <button onclick="calcRectangle()">Calculate</button>
+            <div id="rectRes" class="result">Result: 50.00 sq units</div>
+        </div>
+
+        <!-- Square Section -->
+        <div class="form-section">
+            <label>Square Area</label>
+            Side (s): <input type="number" id="side" value="4">
+            <button onclick="calcSquare()">Calculate</button>
+            <div id="squareRes" class="result">Result: 16.00 sq units</div>
+        </div>
+    </div>
+
+    <script>
+        function calcCircle() {
+            var r = parseFloat(document.getElementById("radius").value);
+            var area = (Math.PI * r * r).toFixed(2);
+            document.getElementById("circleRes").innerText = "Result: " + area + " sq units";
+        }
+
+        function calcRectangle() {
+            var l = parseFloat(document.getElementById("length").value);
+            var w = parseFloat(document.getElementById("width").value);
+            var area = (l * w).toFixed(2);
+            document.getElementById("rectRes").innerText = "Result: " + area + " sq units";
+        }
+
+        function calcSquare() {
+            var s = parseFloat(document.getElementById("side").value);
+            var area = (s * s).toFixed(2);
+            document.getElementById("squareRes").innerText = "Result: " + area + " sq units";
+        }
+    </script>
+
+</body>
+</html>

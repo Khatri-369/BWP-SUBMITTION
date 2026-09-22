@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 7.5 - Book Record XML & XSLT Table</title>
+</head>
+<body>
+
+    <div id="output">Loading Book Record Table via XSLT...</div>
+
+    <script>
+        function loadXSLT() {
+            var reqXml = new XMLHttpRequest();
+            reqXml.open("GET", "bookrecord.xml", true);
+            reqXml.onreadystatechange = function () {
+                if (reqXml.readyState === 4 && reqXml.status === 200) {
+                    var xml = reqXml.responseXML;
+
+                    var reqXsl = new XMLHttpRequest();
+                    reqXsl.open("GET", "bookrecord.xsl", true);
+                    reqXsl.onreadystatechange = function () {
+                        if (reqXsl.readyState === 4 && reqXsl.status === 200) {
+                            var xsl = reqXsl.responseXML;
+
+                            if (window.XSLTProcessor) {
+                                var xsltProcessor = new XSLTProcessor();
+                                xsltProcessor.importStylesheet(xsl);
+                                var resultDocument = xsltProcessor.transformToFragment(xml, document);
+                                document.getElementById("output").innerHTML = "";
+                                document.getElementById("output").appendChild(resultDocument);
+                            } else {
+                                alert("XSLTProcessor is not supported in this browser.");
+                            }
+                        }
+                    };
+                    reqXsl.send();
+                }
+            };
+            reqXml.send();
+        }
+
+        window.onload = loadXSLT;
+    </script>
+
+</body>
+</html>

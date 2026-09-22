@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Art and Craft Photo Album</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .hero-section {
+            background-color: #343a40;
+            color: #ffffff;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .card-img-top {
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .card {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        footer {
+            background-color: #212529;
+            color: #ffffff;
+            padding: 20px 0;
+            margin-top: 50px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Hero Section -->
+    <div class="hero-section mb-5">
+        <div class="container">
+            <h1 class="fw-bold">Art & Craft Photo Album</h1>
+            <p class="lead">A showcase of handmade pottery, paintings, paper crafts, and creative designs.</p>
+        </div>
+    </div>
+
+    <!-- Album Photo Gallery -->
+    <div class="container mb-5">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+            
+            <!-- Card 1 -->
+            <div class="col">
+                <div class="card h-100">
+                    <img src="https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?auto=format&fit=crop&w=500&q=80" class="card-img-top" alt="Pottery & Clay Art">
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">Pottery & Clay Art</h5>
+                        <p class="card-text text-muted">Handcrafted ceramic vases and pottery made using traditional spinning wheels.</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <button type="button" class="btn btn-sm btn-outline-primary">View</button>
+                            <small class="text-muted">9 mins ago</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="col">
+                <div class="card h-100">
+                    <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=500&q=80" class="card-img-top" alt="Canvas Oil Painting">
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">Canvas Oil Painting</h5>
+                        <p class="card-text text-muted">Vibrant abstract canvas paintings created with acrylics and oil colors.</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <button type="button" class="btn btn-sm btn-outline-primary">View</button>
+                            <small class="text-muted">15 mins ago</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="col">
+                <div class="card h-100">
+                    <img src="https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=500&q=80" class="card-img-top" alt="Paper & Origami Crafts">
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">Paper & Origami Crafts</h5>
+                        <p class="card-text text-muted">Creative paper quilling, origami sculptures, and handmade greeting cards.</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <button type="button" class="btn btn-sm btn-outline-primary">View</button>
+                            <small class="text-muted">30 mins ago</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="col">
+                <div class="card h-100">
+                    <img src="https://images.unsplash.com/photo-1520412099551-62b6bafeb5bb?auto=format&fit=crop&w=500&q=80" class="card-img-top" alt="Handmade Wooden Crafts">
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">Wooden Handcrafts</h5>
+                        <p class="card-text text-muted">Custom carved wooden home decor items, toys, and aesthetic wall art.</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <button type="button" class="btn btn-sm btn-outline-primary">View</button>
+                            <small class="text-muted">1 hour ago</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="col">
+                <div class="card h-100">
+                    <img src="https://images.unsplash.com/photo-1606760227091-3dd850d97f1d?auto=format&fit=crop&w=500&q=80" class="card-img-top" alt="Knitting & Thread Art">
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">Knitting & Thread Art</h5>
+                        <p class="card-text text-muted">Hand-knit wool products, macrame wall hangings, and embroidery patterns.</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <button type="button" class="btn btn-sm btn-outline-primary">View</button>
+                            <small class="text-muted">2 hours ago</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 6 -->
+            <div class="col">
+                <div class="card h-100">
+                    <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=500&q=80" class="card-img-top" alt="Sketching & Drawing">
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">Sketching & Drawing</h5>
+                        <p class="card-text text-muted">Detailed charcoal portraits, pencil sketches, and ink illustrations.</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <button type="button" class="btn btn-sm btn-outline-primary">View</button>
+                            <small class="text-muted">3 hours ago</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p class="mb-0">&copy; Art & Craft Photo Album | Created with Bootstrap</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

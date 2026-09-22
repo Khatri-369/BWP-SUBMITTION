@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            padding: 30px;
+            margin: 0;
+        }
+
+        .form-card {
+            max-width: 650px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 35px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #007bff;
+            margin-top: 0;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 6px;
+            color: #333333;
+        }
+
+        input[type="text"],
+        input[type="tel"],
+        input[type="email"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #cccccc;
+            border-radius: 4px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            height: 80px;
+            resize: vertical;
+        }
+
+        .radio-group, .checkbox-group {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            margin-top: 5px;
+        }
+
+        .radio-group label, .checkbox-group label {
+            font-weight: normal;
+            cursor: pointer;
+            margin-bottom: 0;
+        }
+
+        .btn-container {
+            text-align: center;
+            margin-top: 25px;
+        }
+
+        button {
+            padding: 12px 30px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 0 5px;
+        }
+
+        button[type="submit"] {
+            background-color: #28a745;
+            color: #ffffff;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #218838;
+        }
+
+        button[type="reset"] {
+            background-color: #dc3545;
+            color: #ffffff;
+        }
+
+        button[type="reset"]:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-card">
+        <h2>Student Registration Form</h2>
+
+        <!-- FORM TAG -->
+        <form action="#" method="POST" onsubmit="alert('Registration Form Submitted Successfully!'); return false;">
+
+            <!-- First Name, Middle Name, Last Name -->
+            <div class="form-group">
+                <label for="firstName">First Name *</label>
+                <input type="text" id="firstName" name="firstName" placeholder="Enter First Name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="middleName">Middle Name</label>
+                <input type="text" id="middleName" name="middleName" placeholder="Enter Middle Name">
+            </div>
+
+            <div class="form-group">
+                <label for="lastName">Last Name *</label>
+                <input type="text" id="lastName" name="lastName" placeholder="Enter Last Name" required>
+            </div>
+
+            <!-- Gender (Radio Buttons) -->
+            <div class="form-group">
+                <label>Gender *</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="gender" value="Male" required> Male</label>
+                    <label><input type="radio" name="gender" value="Female"> Female</label>
+                    <label><input type="radio" name="gender" value="Other"> Other</label>
+                </div>
+            </div>
+
+            <!-- Address (Textarea) -->
+            <div class="form-group">
+                <label for="address">Address *</label>
+                <textarea id="address" name="address" placeholder="Enter Complete Address" required></textarea>
+            </div>
+
+            <!-- Phone No. & Email ID -->
+            <div class="form-group">
+                <label for="phone">Phone No. *</label>
+                <input type="tel" id="phone" name="phone" placeholder="Enter 10-digit Phone Number" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email ID *</label>
+                <input type="email" id="email" name="email" placeholder="Enter Email Address" required>
+            </div>
+
+            <!-- Hobbies (Checkboxes) -->
+            <div class="form-group">
+                <label>Hobbies</label>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" name="hobbies" value="Reading"> Reading</label>
+                    <label><input type="checkbox" name="hobbies" value="Coding"> Coding</label>
+                    <label><input type="checkbox" name="hobbies" value="Sports"> Sports</label>
+                    <label><input type="checkbox" name="hobbies" value="Music"> Music</label>
+                </div>
+            </div>
+
+            <!-- City, State, Country -->
+            <div class="form-group">
+                <label for="city">City *</label>
+                <input type="text" id="city" name="city" placeholder="Enter City" required>
+            </div>
+
+            <div class="form-group">
+                <label for="state">State *</label>
+                <input type="text" id="state" name="state" placeholder="Enter State" required>
+            </div>
+
+            <div class="form-group">
+                <label for="country">Country *</label>
+                <input type="text" id="country" name="country" value="India" placeholder="Enter Country" required>
+            </div>
+
+            <!-- College Name (Dropdown Menu) -->
+            <div class="form-group">
+                <label for="college">College Name *</label>
+                <select id="college" name="college" required>
+                    <option value="">-- Select College Name --</option>
+                    <option value="FTE_MSU">Faculty of Technology and Engineering, MSU Baroda</option>
+                    <option value="MSU_Main">The Maharaja Sayajirao University of Baroda</option>
+                    <option value="IIT_B">Indian Institute of Technology, Bombay</option>
+                    <option value="NIT_S">National Institute of Technology, Surat</option>
+                    <option value="Other">Other College</option>
+                </select>
+            </div>
+
+            <!-- Buttons -->
+            <div class="btn-container">
+                <button type="submit">Submit Registration</button>
+                <button type="reset">Reset Form</button>
+            </div>
+
+        </form>
+    </div>
+
+</body>
+</html>

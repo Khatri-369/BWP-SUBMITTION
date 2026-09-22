@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 4.4 - Vowel 'a' Occurrence Finder</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .box {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            width: 480px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-top: 0;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 15px;
+            box-sizing: border-box;
+            margin-bottom: 15px;
+        }
+
+        button {
+            width: 100%;
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .result-box {
+            margin-top: 20px;
+            background-color: #e9ecef;
+            padding: 15px;
+            border-radius: 4px;
+            display: none;
+        }
+
+        .result-box p {
+            margin: 6px 0;
+            font-size: 15px;
+        }
+
+        .highlight {
+            font-weight: bold;
+            color: #d9534f;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="box">
+        <h2>Vowel 'a' Finder & Substring</h2>
+        <p class="text-muted" style="font-size: 13px; color: #666;">Enter a word (e.g., <strong>ajanta</strong>) to find first/last position of 'a' and extract the string between them.</p>
+
+        <label for="wordInput">Enter Word:</label>
+        <input type="text" id="wordInput" value="ajanta" placeholder="Type a word...">
+
+        <button onclick="findVowels()">Find Positions & Substring</button>
+
+        <div id="resultBox" class="result-box">
+            <p><strong>Input Word:</strong> <span id="resWord"></span></p>
+            <p><strong>First Occurrence of 'a':</strong> Position <span id="firstPos" class="highlight"></span></p>
+            <p><strong>Last Occurrence of 'a':</strong> Position <span id="lastPos" class="highlight"></span></p>
+            <p><strong>String Between Them:</strong> "<span id="betweenStr" class="highlight"></span>"</p>
+        </div>
+    </div>
+
+    <script>
+        function findVowels() {
+            var word = document.getElementById("wordInput").value.trim();
+            var lowerWord = word.toLowerCase();
+
+            var firstIndex = lowerWord.indexOf('a');
+            var lastIndex = lowerWord.lastIndexOf('a');
+
+            var resultBox = document.getElementById("resultBox");
+
+            if (firstIndex === -1) {
+                alert("Vowel 'a' was not found in the given word.");
+                resultBox.style.display = "none";
+                return;
+            }
+
+            if (firstIndex === lastIndex) {
+                alert("Only one occurrence of 'a' was found at position " + (firstIndex + 1) + ". Need at least 2 occurrences of 'a'.");
+                resultBox.style.display = "none";
+                return;
+            }
+
+            // Positions (1-indexed for human readability)
+            var firstPos = firstIndex + 1;
+            var lastPos = lastIndex + 1;
+
+            // Extract string between first 'a' and last 'a'
+            var substringBetween = word.substring(firstIndex + 1, lastIndex);
+
+            document.getElementById("resWord").innerText = word;
+            document.getElementById("firstPos").innerText = firstPos;
+            document.getElementById("lastPos").innerText = lastPos;
+            document.getElementById("betweenStr").innerText = substringBetween;
+
+            resultBox.style.display = "block";
+        }
+    </script>
+
+</body>
+</html>

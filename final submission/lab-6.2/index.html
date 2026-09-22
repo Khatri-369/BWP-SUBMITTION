@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 6.2 - Live Cricket Score AJAX</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #0f1923;
+            color: #ffffff;
+            padding: 40px;
+            margin: 0;
+        }
+
+        .scoreboard-card {
+            max-width: 600px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #1b2838 0%, #101c2c 100%);
+            border: 1px solid #00d2ff;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 25px rgba(0, 210, 255, 0.2);
+        }
+
+        .match-header {
+            text-align: center;
+            border-bottom: 1px solid #2a3a4e;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+
+        .match-header h3 {
+            color: #ffcc00;
+            margin: 0 0 5px 0;
+            font-size: 20px;
+        }
+
+        .match-header p {
+            color: #8f9bba;
+            margin: 0;
+            font-size: 13px;
+        }
+
+        .score-display {
+            text-align: center;
+            background-color: rgba(0, 210, 255, 0.08);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .team-score {
+            font-size: 26px;
+            font-weight: bold;
+            color: #00e676;
+            margin-bottom: 8px;
+        }
+
+        .match-status {
+            font-size: 14px;
+            color: #ff5252;
+            font-weight: bold;
+        }
+
+        .player-info {
+            font-size: 14px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            background: #142132;
+            padding: 15px;
+            border-radius: 6px;
+        }
+
+        .player-info div {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .recent-over {
+            text-align: center;
+            font-size: 14px;
+            color: #ffcc00;
+        }
+
+        .btn-box {
+            text-align: center;
+            margin-top: 25px;
+        }
+
+        button {
+            background-color: #00d2ff;
+            color: #0f1923;
+            border: none;
+            padding: 12px 24px;
+            font-size: 15px;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0099cc;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="scoreboard-card">
+        <div class="match-header">
+            <h3 id="matchName">Live Cricket Scoreboard</h3>
+            <p id="matchVenue">Fetching details...</p>
+        </div>
+
+        <div class="score-display">
+            <div class="team-score" id="teamScore">-- / --</div>
+            <div class="match-status" id="matchStatus">Loading Live Score via AJAX...</div>
+        </div>
+
+        <div class="player-info">
+            <div><span><strong>Striker:</strong></span> <span id="batsman1" style="color: #00d2ff;">--</span></div>
+            <div><span><strong>Non-Striker:</strong></span> <span id="batsman2" style="color: #00d2ff;">--</span></div>
+            <div><span><strong>Bowler:</strong></span> <span id="bowler" style="color: #ffcc00;">--</span></div>
+        </div>
+
+        <div class="recent-over">
+            <strong>Recent Over:</strong> <span id="recent">--</span>
+        </div>
+
+        <div class="btn-box">
+            <button onclick="fetchLiveScore()">🏏 Refresh Live Score (AJAX)</button>
+        </div>
+    </div>
+
+    <script>
+        function fetchLiveScore() {
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "score.json", true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    var data = JSON.parse(xhr.responseText);
+
+                    document.getElementById("matchName").innerText = data.match;
+                    document.getElementById("matchVenue").innerText = data.venue;
+                    document.getElementById("teamScore").innerText = data.team2;
+                    document.getElementById("matchStatus").innerText = data.status;
+
+                    document.getElementById("batsman1").innerText = data.batsman1;
+                    document.getElementById("batsman2").innerText = data.batsman2;
+                    document.getElementById("bowler").innerText = data.bowler;
+                    document.getElementById("recent").innerText = data.recent;
+                }
+            };
+
+            xhr.send();
+        }
+
+        // Auto load live score via AJAX
+        window.onload = function() {
+            fetchLiveScore();
+            // Polling every 3 seconds
+            setInterval(fetchLiveScore, 3000);
+        };
+    </script>
+
+</body>
+</html>

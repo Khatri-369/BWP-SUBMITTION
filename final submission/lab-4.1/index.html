@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 4.1 - Video Player Controls</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .container {
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 25px;
+            max-width: 900px;
+            margin: auto;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        video {
+            border: 2px solid #333333;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            transition: width 0.3s ease;
+        }
+
+        .btn-group button {
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            padding: 10px 18px;
+            margin: 5px;
+            font-size: 15px;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn-group button:hover {
+            background-color: #0056b3;
+        }
+
+        .btn-group button.btn-danger {
+            background-color: #dc3545;
+        }
+
+        .btn-group button.btn-danger:hover {
+            background-color: #a71d2a;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Video Player with JavaScript Controls</h2>
+        <p>Use the buttons below to Play/Pause and change video dimensions.</p>
+
+        <!-- Video Element -->
+        <video id="myVideo" width="560" controls>
+            <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
+        <!-- Control Buttons -->
+        <div class="btn-group">
+            <button onclick="playPause()" id="playBtn">Play / Pause</button>
+            <button onclick="makeSmall()">Small (320px)</button>
+            <button onclick="makeNormal()">Normal (560px)</button>
+            <button onclick="makeLarge()">Large (800px)</button>
+        </div>
+    </div>
+
+    <script>
+        var video = document.getElementById("myVideo");
+
+        function playPause() {
+            if (video.paused) {
+                video.play();
+            } else {
+                video.pause();
+            }
+        }
+
+        function makeSmall() {
+            video.width = 320;
+        }
+
+        function makeNormal() {
+            video.width = 560;
+        }
+
+        function makeLarge() {
+            video.width = 800;
+        }
+    </script>
+
+</body>
+</html>

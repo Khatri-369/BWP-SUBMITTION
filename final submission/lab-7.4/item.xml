@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="item.xsl"?>
+<items>
+    <product>
+        <id>P101</id>
+        <name>Wireless Mouse</name>
+        <price>250</price>
+        <category>Electronics</category>
+    </product>
+    <product>
+        <id>P102</id>
+        <name>Mechanical Keyboard</name>
+        <price>1200</price>
+        <category>Electronics</category>
+    </product>
+    <product>
+        <id>P103</id>
+        <name>USB Pendrive 32GB</name>
+        <price>280</price>
+        <category>Storage</category>
+    </product>
+    <product>
+        <id>P104</id>
+        <name>Gaming Headset</name>
+        <price>850</price>
+        <category>Audio</category>
+    </product>
+    <product>
+        <id>P105</id>
+        <name>Mouse Pad Mat</name>
+        <price>150</price>
+        <category>Accessories</category>
+    </product>
+    <product>
+        <id>P106</id>
+        <name>HDMI Cable 1.5m</name>
+        <price>199</price>
+        <category>Accessories</category>
+    </product>
+</items>

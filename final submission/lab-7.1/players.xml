@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<players xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="players.xsd">
+    <player>
+        <player-name>Virat Kohli</player-name>
+        <age>35</age>
+        <batting-average>58.67</batting-average>
+        <highest-score>183</highest-score>
+    </player>
+    <player>
+        <player-name>Rohit Sharma</player-name>
+        <age>37</age>
+        <batting-average>49.12</batting-average>
+        <highest-score>264</highest-score>
+    </player>
+    <player>
+        <player-name>MS Dhoni</player-name>
+        <age>42</age>
+        <batting-average>50.57</batting-average>
+        <highest-score>183</highest-score>
+    </player>
+    <player>
+        <player-name>Shubman Gill</player-name>
+        <age>24</age>
+        <batting-average>55.20</batting-average>
+        <highest-score>208</highest-score>
+    </player>
+</players>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 4.3 - Form Validation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .form-box {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            width: 380px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+
+        button {
+            width: 100%;
+            background-color: #28a745;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        .error-msg {
+            color: #dc3545;
+            font-size: 13px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .success-msg {
+            color: #28a745;
+            font-size: 14px;
+            text-align: center;
+            margin-top: 15px;
+            display: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-box">
+        <h2>User Login Validation</h2>
+        
+        <form id="loginForm" onsubmit="return validateForm(event)">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" placeholder="Enter username">
+                <div id="usernameError" class="error-msg"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" placeholder="Enter password">
+                <div id="passwordError" class="error-msg"></div>
+            </div>
+
+            <button type="submit">Submit</button>
+
+            <div id="successMsg" class="success-msg">Validation Successful!</div>
+        </form>
+    </div>
+
+    <script>
+        function validateForm(event) {
+            event.preventDefault();
+
+            var username = document.getElementById("username").value.trim();
+            var password = document.getElementById("password").value;
+
+            var usernameError = document.getElementById("usernameError");
+            var passwordError = document.getElementById("passwordError");
+            var successMsg = document.getElementById("successMsg");
+
+            // Reset errors
+            usernameError.style.display = "none";
+            passwordError.style.display = "none";
+            successMsg.style.display = "none";
+
+            var isValid = true;
+
+            // 1. Username validation: not blank, should not start with _, @, or number
+            if (username === "") {
+                usernameError.innerText = "Username cannot be blank.";
+                usernameError.style.display = "block";
+                isValid = false;
+            } else {
+                var firstChar = username.charAt(0);
+                if (firstChar === '_' || firstChar === '@' || (firstChar >= '0' && firstChar <= '9')) {
+                    usernameError.innerText = "Username cannot start with '_', '@', or any number.";
+                    usernameError.style.display = "block";
+                    isValid = false;
+                }
+            }
+
+            // 2. Password validation: not blank, length between 6 and 12 characters
+            if (password === "") {
+                passwordError.innerText = "Password cannot be blank.";
+                passwordError.style.display = "block";
+                isValid = false;
+            } else if (password.length < 6 || password.length > 12) {
+                passwordError.innerText = "Password length must be between 6 to 12 characters.";
+                passwordError.style.display = "block";
+                isValid = false;
+            }
+
+            if (isValid) {
+                successMsg.style.display = "block";
+                alert("Validation Passed Successfully!");
+            }
+
+            return isValid;
+        }
+    </script>
+
+</body>
+</html>

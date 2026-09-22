@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<books xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="books.xsd">
+    <book>
+        <book-name>Operating System Concepts</book-name>
+        <author>Abraham Silberschatz</author>
+        <isbn>978-1118063330</isbn>
+        <quantity>15</quantity>
+    </book>
+    <book>
+        <book-name>Introduction to Algorithms</book-name>
+        <author>Thomas H. Cormen</author>
+        <isbn>978-0262033848</isbn>
+        <quantity>22</quantity>
+    </book>
+    <book>
+        <book-name>Computer Networking: A Top-Down Approach</book-name>
+        <author>James Kurose</author>
+        <isbn>978-0133594140</isbn>
+        <quantity>18</quantity>
+    </book>
+    <book>
+        <book-name>Database System Concepts</book-name>
+        <author>Henry F. Korth</author>
+        <isbn>978-0073523323</isbn>
+        <quantity>30</quantity>
+    </book>
+</books>

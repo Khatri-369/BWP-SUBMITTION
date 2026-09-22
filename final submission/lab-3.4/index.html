@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Marksheet</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f4f6f9;
+            font-family: Arial, sans-serif;
+            padding: 30px 0;
+        }
+
+        .marksheet-card {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            max-width: 850px;
+            margin: auto;
+        }
+
+        .university-header {
+            text-align: center;
+            border-bottom: 2px solid #0d6efd;
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+        }
+
+        .info-table td {
+            padding: 6px 12px;
+            font-size: 0.95rem;
+        }
+
+        .summary-box {
+            background-color: #e9ecef;
+            border-radius: 6px;
+            padding: 15px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="marksheet-card">
+            
+            <!-- Header Section -->
+            <div class="university-header">
+                <h3 class="fw-bold text-primary mb-1">FACULTY OF TECHNOLOGY & ENGINEERING</h3>
+                <h5 class="text-secondary mb-0">STUDENT ACADEMIC MARKSHEET</h5>
+            </div>
+
+            <!-- Student Info Section -->
+            <div class="row mb-4">
+                <div class="col-md-6">
+                    <table class="table-borderless info-table">
+                        <tr><td><strong>Student Name:</strong> OM KUMAR KHATRI</td></tr>
+                        <tr><td><strong>Enrollment No:</strong> 2026001234</td></tr>
+                        <tr><td><strong>Roll No:</strong> 105</td></tr>
+                    </table>
+                </div>
+                <div class="col-md-6">
+                    <table class="table-borderless info-table">
+                        <tr><td><strong>Course:</strong> B.E. Computer Science &amp; Engineering</td></tr>
+                        <tr><td><strong>Semester:</strong> IV (4th Semester)</td></tr>
+                        <tr><td><strong>Academic Year:</strong> 2025 - 2026</td></tr>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Marksheet Table -->
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped table-hover align-middle">
+                    <thead class="table-primary text-center">
+                        <tr>
+                            <th>Sub Code</th>
+                            <th>Subject Name</th>
+                            <th>Max Marks</th>
+                            <th>Min Marks</th>
+                            <th>Obtained Marks</th>
+                            <th>Grade</th>
+                            <th>Result</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="text-center">CSE401</td>
+                            <td>Basic Web Programming (BWP)</td>
+                            <td class="text-center">100</td>
+                            <td class="text-center">40</td>
+                            <td class="text-center fw-bold">88</td>
+                            <td class="text-center text-primary fw-bold">A+</td>
+                            <td class="text-center"><span class="badge bg-success">PASS</span></td>
+                        </tr>
+                        <tr>
+                            <td class="text-center">CSE402</td>
+                            <td>Data Structures & Algorithms</td>
+                            <td class="text-center">100</td>
+                            <td class="text-center">40</td>
+                            <td class="text-center fw-bold">82</td>
+                            <td class="text-center text-primary fw-bold">A</td>
+                            <td class="text-center"><span class="badge bg-success">PASS</span></td>
+                        </tr>
+                        <tr>
+                            <td class="text-center">CSE403</td>
+                            <td>Database Management Systems</td>
+                            <td class="text-center">100</td>
+                            <td class="text-center">40</td>
+                            <td class="text-center fw-bold">79</td>
+                            <td class="text-center text-primary fw-bold">B+</td>
+                            <td class="text-center"><span class="badge bg-success">PASS</span></td>
+                        </tr>
+                        <tr>
+                            <td class="text-center">CSE404</td>
+                            <td>Operating Systems</td>
+                            <td class="text-center">100</td>
+                            <td class="text-center">40</td>
+                            <td class="text-center fw-bold">85</td>
+                            <td class="text-center text-primary fw-bold">A</td>
+                            <td class="text-center"><span class="badge bg-success">PASS</span></td>
+                        </tr>
+                        <tr>
+                            <td class="text-center">CSE405</td>
+                            <td>Computer Networks</td>
+                            <td class="text-center">100</td>
+                            <td class="text-center">40</td>
+                            <td class="text-center fw-bold">91</td>
+                            <td class="text-center text-primary fw-bold">O</td>
+                            <td class="text-center"><span class="badge bg-success">PASS</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Result Summary Section -->
+            <div class="summary-box">
+                <div class="row text-center align-items-center">
+                    <div class="col-md-3">
+                        <h6 class="text-muted mb-1">Total Marks</h6>
+                        <h4 class="fw-bold text-dark">425 / 500</h4>
+                    </div>
+                    <div class="col-md-3">
+                        <h6 class="text-muted mb-1">Percentage</h6>
+                        <h4 class="fw-bold text-primary">85.00 %</h4>
+                    </div>
+                    <div class="col-md-3">
+                        <h6 class="text-muted mb-1">SPI / CGPA</h6>
+                        <h4 class="fw-bold text-info">8.80</h4>
+                    </div>
+                    <div class="col-md-3">
+                        <h6 class="text-muted mb-1">Final Class</h6>
+                        <span class="badge bg-success fs-6">FIRST CLASS DIST.</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Signatures -->
+            <div class="row mt-5 text-center">
+                <div class="col-6">
+                    <p class="mb-0 fw-bold">Prepared By</p>
+                    <small class="text-muted">Examination Dept.</small>
+                </div>
+                <div class="col-6">
+                    <p class="mb-0 fw-bold">Controller of Examinations</p>
+                    <small class="text-muted">MSU Baroda</small>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

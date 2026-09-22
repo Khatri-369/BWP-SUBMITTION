@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 5.3 - jQuery Animate Multiple Properties</title>
+    <!-- Include jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            padding: 40px;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        button {
+            background-color: #6f42c1;
+            color: #ffffff;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-bottom: 25px;
+        }
+
+        button:hover {
+            background-color: #593196;
+        }
+
+        #box {
+            background-color: #fd7e14;
+            color: #ffffff;
+            width: 150px;
+            height: 150px;
+            opacity: 1;
+            margin: 0 auto;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>jQuery animate() CSS Properties</h2>
+        <p>Click the button to animate <code>opacity: 0.4</code>, <code>height: 500px</code>, and <code>width: 500px</code>.</p>
+
+        <button id="animateBtn">Start Animation</button>
+        <button id="resetBtn" style="background-color: #dc3545;">Reset Box</button>
+
+        <div id="box">Target Div</div>
+    </div>
+
+    <script>
+        $(document).ready(function(){
+            // Set opacity: 0.4, height: 500px, width: 500px
+            $("#animateBtn").click(function(){
+                $("#box").animate({
+                    opacity: 0.4,
+                    height: '500px',
+                    width: '500px'
+                });
+            });
+
+            // Reset box to original size
+            $("#resetBtn").click(function(){
+                $("#box").animate({
+                    opacity: 1,
+                    height: '150px',
+                    width: '150px'
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>

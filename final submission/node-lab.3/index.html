@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab Node-3 - Student Info by PRN</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            padding: 40px;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #007bff;
+            text-align: center;
+        }
+
+        .search-box {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        input[type="text"] {
+            padding: 8px 12px;
+            font-size: 15px;
+            width: 220px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            padding: 8px 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        td, th {
+            padding: 12px;
+            border: 1px solid #ddd;
+            font-size: 15px;
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+            text-align: left;
+            width: 30%;
+        }
+
+        .no-result {
+            color: #dc3545;
+            text-align: center;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>🎓 Student Information Lookup by PRN</h2>
+        <p style="text-align: center; color: #666; font-size: 14px;">Reads <code>student.json</code> file from server and displays student information in tabular format.</p>
+
+        <div class="search-box">
+            <label for="prnInput"><strong>Select or Enter PRN:</strong></label>&nbsp;
+            <input type="text" id="prnInput" value="202600101" placeholder="Enter PRN No">
+            <button onclick="searchStudent()">Search Info</button>
+        </div>
+
+        <div id="studentTableContainer">
+            <!-- Dynamic Tabular Output -->
+        </div>
+    </div>
+
+    <script>
+        var studentsData = [];
+
+        function loadStudentJSON() {
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "student.json", true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    studentsData = JSON.parse(xhr.responseText);
+                    searchStudent();
+                }
+            };
+            xhr.send();
+        }
+
+        function searchStudent() {
+            var prn = document.getElementById("prnInput").value.trim();
+            var student = studentsData.find(function(s) { return s.PRN === prn; });
+
+            var container = document.getElementById("studentTableContainer");
+
+            if (student) {
+                var html = '<table>';
+                html += '<tr><th>Student Name</th><td><strong>' + student.name + '</strong></td></tr>';
+                html += '<tr><th>PRN Number</th><td><code>' + student.PRN + '</code></td></tr>';
+                html += '<tr><th>Branch</th><td>' + student.Branch + '</td></tr>';
+                html += '<tr><th>Semester</th><td>' + student.Semester + '</td></tr>';
+                html += '<tr><th>Address</th><td>' + student.address + '</td></tr>';
+                html += '<tr><th>Subject Name</th><td>' + student.subjectName + '</td></tr>';
+                html += '</table>';
+                container.innerHTML = html;
+            } else {
+                container.innerHTML = '<div class="no-result">❌ No student record found for PRN: ' + prn + '</div>';
+            }
+        }
+
+        window.onload = loadStudentJSON;
+    </script>
+
+</body>
+</html>

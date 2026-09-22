@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 6.3 - Server Clock AJAX</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #18191a;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .clock-card {
+            background-color: #242526;
+            border: 2px solid #00e676;
+            border-radius: 12px;
+            padding: 40px;
+            text-align: center;
+            width: 450px;
+            box-shadow: 0 0 20px rgba(0, 230, 118, 0.2);
+        }
+
+        h2 {
+            margin-top: 0;
+            color: #ffffff;
+        }
+
+        .clock-display {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 42px;
+            font-weight: bold;
+            color: #00e676;
+            background-color: #18191a;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            letter-spacing: 2px;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+        }
+
+        .date-display {
+            font-size: 16px;
+            color: #b0b3b8;
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: rgba(0, 230, 118, 0.2);
+            color: #00e676;
+            font-size: 12px;
+            font-weight: bold;
+            padding: 4px 10px;
+            border-radius: 12px;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="clock-card">
+        <h2>⏰ AJAX Server Clock</h2>
+        <p style="font-size: 13px; color: #b0b3b8;">Fetching live server time using XMLHttpRequest (AJAX)</p>
+
+        <!-- Digital Clock Display -->
+        <div class="clock-display" id="clock">00:00:00 AM</div>
+
+        <!-- Date Display -->
+        <div class="date-display" id="date">Loading Server Date...</div>
+
+        <div class="badge">● LIVE AJAX Sync Every 1 sec</div>
+    </div>
+
+    <script>
+        function fetchServerClock() {
+            var xhr = new XMLHttpRequest();
+            // Fetch server response headers / time.txt with cache busting
+            xhr.open("GET", "time.txt?t=" + new Date().getTime(), true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    // Extract Date header from Server or fallback to system time
+                    var serverDateStr = xhr.getResponseHeader("Date");
+                    var now = serverDateStr ? new Date(serverDateStr) : new Date();
+
+                    var hours = now.getHours();
+                    var minutes = now.getMinutes();
+                    var seconds = now.getSeconds();
+                    var ampm = hours >= 12 ? 'PM' : 'AM';
+
+                    hours = hours % 12;
+                    hours = hours ? hours : 12; // 0 becomes 12
+                    hours = hours < 10 ? '0' + hours : hours;
+                    minutes = minutes < 10 ? '0' + minutes : minutes;
+                    seconds = seconds < 10 ? '0' + seconds : seconds;
+
+                    var timeString = hours + ":" + minutes + ":" + seconds + " " + ampm;
+                    var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+                    var dateString = now.toLocaleDateString("en-US", options);
+
+                    document.getElementById("clock").innerText = timeString;
+                    document.getElementById("date").innerText = dateString;
+                }
+            };
+
+            xhr.send();
+        }
+
+        // Start Server Clock polling via AJAX every 1 second
+        fetchServerClock();
+        setInterval(fetchServerClock, 1000);
+    </script>
+
+</body>
+</html>

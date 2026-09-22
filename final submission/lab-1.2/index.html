@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faculty of Technology and Engineering | The Maharaja Sayajirao University of Baroda</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f0f2f5;
+            color: #333333;
+        }
+
+        /* Master Table */
+        table.main-layout {
+            width: 100%;
+            max-width: 1200px;
+            margin: 20px auto;
+            background-color: #ffffff;
+            border-collapse: collapse;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            border: 1px solid #c0c6cc;
+        }
+
+        /* Top Utilities Bar */
+        .top-bar-cell {
+            background-color: #00a8e8;
+            color: #ffffff;
+            padding: 8px 20px;
+            font-size: 13px;
+        }
+
+        .top-bar-cell a {
+            color: #ffffff;
+            text-decoration: none;
+            margin-right: 15px;
+        }
+
+        .top-bar-cell a:hover {
+            text-decoration: underline;
+        }
+
+        /* Header Row */
+        .header-cell {
+            background-color: #ffffff;
+            padding: 15px 25px;
+            border-bottom: 3px solid #1a2b4c;
+        }
+
+        .header-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .logo-cell {
+            width: 90px;
+            vertical-align: middle;
+            text-align: center;
+        }
+
+        .msu-seal {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 2px solid #1a2b4c;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #fdfdfd;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+
+        .title-cell {
+            padding-left: 20px;
+            vertical-align: middle;
+        }
+
+        .title-cell h1 {
+            font-size: 24px;
+            color: #1a2b4c;
+            margin-bottom: 4px;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+        }
+
+        .title-cell h2 {
+            font-size: 17px;
+            color: #0088cc;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .title-cell p {
+            font-size: 12px;
+            color: #666666;
+        }
+
+        .badge-cell {
+            width: 150px;
+            text-align: right;
+            vertical-align: middle;
+        }
+
+        .naac-badge {
+            display: inline-block;
+            background-color: #ff8800;
+            color: #ffffff;
+            font-weight: bold;
+            padding: 6px 14px;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+
+        /* Navigation Menu Row */
+        .nav-cell {
+            background-color: #1a2b4c;
+            padding: 0;
+        }
+
+        .nav-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: center;
+        }
+
+        .nav-table td {
+            padding: 12px 10px;
+            border-right: 1px solid #2b3a55;
+        }
+
+        .nav-table td:last-child {
+            border-right: none;
+        }
+
+        .nav-table a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+            display: block;
+            transition: color 0.2s;
+        }
+
+        .nav-table td:hover {
+            background-color: #0088cc;
+        }
+
+        .nav-table td.active {
+            background-color: #ff8800;
+        }
+
+        /* Banner Row */
+        .banner-cell {
+            padding: 0;
+            background-color: #000;
+            position: relative;
+        }
+
+        .banner-img {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+            display: block;
+            opacity: 0.9;
+        }
+
+        .banner-caption {
+            background: linear-gradient(to right, rgba(26,43,76,0.95), rgba(26,43,76,0.7));
+            color: #ffffff;
+            padding: 12px 25px;
+            font-size: 15px;
+            font-weight: 500;
+            border-left: 5px solid #ff8800;
+        }
+
+        /* Content Table Row */
+        .content-cell {
+            padding: 20px;
+            background-color: #ffffff;
+        }
+
+        .inner-content-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        /* Left Sidebar (Table Cell) */
+        .sidebar-cell {
+            width: 28%;
+            vertical-align: top;
+            padding-right: 20px;
+            border-right: 2px solid #e9ecef;
+        }
+
+        .widget-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 25px;
+            border: 1px solid #dcdcdc;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .widget-header {
+            background-color: #1a2b4c;
+            color: #ffffff;
+            padding: 10px 14px;
+            font-size: 14px;
+            font-weight: bold;
+            text-align: left;
+        }
+
+        .widget-row td {
+            padding: 10px 14px;
+            border-bottom: 1px solid #eeeeee;
+            font-size: 13px;
+        }
+
+        .widget-row:hover td {
+            background-color: #f8f9fa;
+        }
+
+        .widget-row a {
+            color: #0066cc;
+            text-decoration: none;
+            display: block;
+        }
+
+        .widget-row a:hover {
+            text-decoration: underline;
+        }
+
+        /* Main Center Area (Table Cell) */
+        .main-cell {
+            width: 72%;
+            vertical-align: top;
+            padding-left: 20px;
+        }
+
+        .section-box {
+            margin-bottom: 25px;
+        }
+
+        .section-heading {
+            font-size: 18px;
+            color: #1a2b4c;
+            border-bottom: 2px solid #00a8e8;
+            padding-bottom: 8px;
+            margin-bottom: 14px;
+            font-weight: bold;
+        }
+
+        .section-heading span {
+            color: #ff8800;
+        }
+
+        .about-text {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #444444;
+            text-align: justify;
+            margin-bottom: 15px;
+        }
+
+        /* Departments Sub-Table */
+        table.dept-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            border: 1px solid #c9d2db;
+        }
+
+        table.dept-table th {
+            background-color: #0088cc;
+            color: #ffffff;
+            padding: 10px 12px;
+            font-size: 13px;
+            text-align: left;
+            border: 1px solid #0077b5;
+        }
+
+        table.dept-table td {
+            padding: 9px 12px;
+            font-size: 13px;
+            border: 1px solid #e2e8f0;
+        }
+
+        table.dept-table tr:nth-child(even) td {
+            background-color: #f9fbfd;
+        }
+
+        table.dept-table tr:hover td {
+            background-color: #eef6fc;
+        }
+
+        /* Announcements Sub-Table */
+        table.notice-table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 1px solid #e2e8f0;
+        }
+
+        table.notice-table th {
+            background-color: #2b3a55;
+            color: #ffffff;
+            padding: 8px 12px;
+            font-size: 13px;
+        }
+
+        table.notice-table td {
+            padding: 8px 12px;
+            border-bottom: 1px solid #eef2f5;
+            font-size: 13px;
+        }
+
+        .date-badge {
+            background-color: #ff8800;
+            color: #ffffff;
+            font-size: 11px;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+
+        /* Footer Row */
+        .footer-cell {
+            background-color: #1a2b4c;
+            color: #ffffff;
+            padding: 30px 25px 15px 25px;
+            border-top: 4px solid #ff8800;
+        }
+
+        .footer-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .footer-table td {
+            vertical-align: top;
+            padding: 10px 15px;
+            color: #d1d7e0;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .footer-col-title {
+            color: #ffffff;
+            font-size: 15px;
+            font-weight: bold;
+            margin-bottom: 12px;
+            border-bottom: 1px solid #2b3a55;
+            padding-bottom: 6px;
+        }
+
+        .footer-table a {
+            color: #00a8e8;
+            text-decoration: none;
+        }
+
+        .footer-table a:hover {
+            text-decoration: underline;
+        }
+
+        .copyright-cell {
+            background-color: #111b2e;
+            color: #9aa5b5;
+            text-align: center;
+            padding: 12px;
+            font-size: 12px;
+            border-top: 1px solid #223452;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Main Page Layout Designed Fully Using Table -->
+    <table class="main-layout" cellpadding="0" cellspacing="0">
+        
+        <!-- 1. Top Bar Row -->
+        <tr>
+            <td colspan="2" class="top-bar-cell">
+                <table width="100%" cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td align="left">
+                            <a href="#"><i class="fa-solid fa-graduation-cap"></i> MSUB Webmail</a> |
+                            <a href="#"><i class="fa-solid fa-book"></i> Digital Library</a> |
+                            <a href="#"><i class="fa-solid fa-phone"></i> Helpline: +91-265-2434188</a>
+                        </td>
+                        <td align="right">
+                            <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                            <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                            <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+
+        <!-- 2. Header Row with Logo, Institution Name, and NAAC Rating -->
+        <tr>
+            <td colspan="2" class="header-cell">
+                <table class="header-table">
+                    <tr>
+                        <td class="logo-cell">
+                            <div class="msu-seal">
+                                <i class="fa-solid fa-landmark-dome" style="font-size: 38px; color: #1a2b4c;"></i>
+                            </div>
+                        </td>
+                        <td class="title-cell">
+                            <h1>FACULTY OF TECHNOLOGY AND ENGINEERING</h1>
+                            <h2>The Maharaja Sayajirao University of Baroda</h2>
+                            <p><i class="fa-solid fa-location-dot"></i> Kala Bhavan, Post Box No. 51, Dandia Bazar, Vadodara - 390001, Gujarat, India (Est. 1890)</p>
+                        </td>
+                        <td class="badge-cell">
+                            <span class="naac-badge">NAAC Grade A+</span>
+                            <div style="font-size: 11px; color: #666; margin-top: 4px;">NIRF Ranked</div>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+
+        <!-- 3. Navigation Bar Row Designed Using Table -->
+        <tr>
+            <td colspan="2" class="nav-cell">
+                <table class="nav-table">
+                    <tr>
+                        <td class="active"><a href="#"><i class="fa-solid fa-house"></i> Home</a></td>
+                        <td><a href="#">About Faculty</a></td>
+                        <td><a href="#">Departments</a></td>
+                        <td><a href="#">Programmes</a></td>
+                        <td><a href="#">Admissions</a></td>
+                        <td><a href="#">Training &amp; Placement</a></td>
+                        <td><a href="#">Research</a></td>
+                        <td><a href="#">Contact Us</a></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+
+        <!-- 4. Hero Banner Row -->
+        <tr>
+            <td colspan="2" class="banner-cell">
+                <img src="images/banner1.png" alt="Faculty of Technology and Engineering, MSU" class="banner-img">
+                <div class="banner-caption">
+                    <i class="fa-solid fa-building-columns"></i> <strong>Welcome to FTE, MSU Baroda:</strong> Celebrating over 130 years of engineering excellence, innovation, and leadership since 1890.
+                </div>
+            </td>
+        </tr>
+
+        <!-- 5. Main Body Section: Split Table with Sidebar and Content Columns -->
+        <tr>
+            <td colspan="2" class="content-cell">
+                <table class="inner-content-table">
+                    <tr>
+                        <!-- Left Sidebar Column -->
+                        <td class="sidebar-cell">
+                            
+                            <!-- Quick Links Table -->
+                            <table class="widget-table">
+                                <tr>
+                                    <th class="widget-header"><i class="fa-solid fa-link"></i> Quick Links</th>
+                                </tr>
+                                <tr class="widget-row"><td><a href="#"><i class="fa-solid fa-angle-right"></i> Dean's Secretariat</a></td></tr>
+                                <tr class="widget-row"><td><a href="#"><i class="fa-solid fa-angle-right"></i> Academic Calendars</a></td></tr>
+                                <tr class="widget-row"><td><a href="#"><i class="fa-solid fa-angle-right"></i> Examination Schedule &amp; Results</a></td></tr>
+                                <tr class="widget-row"><td><a href="#"><i class="fa-solid fa-angle-right"></i> Training &amp; Placement Cell</a></td></tr>
+                                <tr class="widget-row"><td><a href="#"><i class="fa-solid fa-angle-right"></i> Student Grievance Cell</a></td></tr>
+                                <tr class="widget-row"><td><a href="#"><i class="fa-solid fa-angle-right"></i> TEQIP-III Initiatives</a></td></tr>
+                                <tr class="widget-row"><td><a href="#"><i class="fa-solid fa-angle-right"></i> Alumni Network</a></td></tr>
+                            </table>
+
+                            <!-- Notice Board Table -->
+                            <table class="widget-table">
+                                <tr>
+                                    <th class="widget-header" style="background-color: #ff8800;"><i class="fa-solid fa-bell"></i> Notice Board</th>
+                                </tr>
+                                <tr class="widget-row">
+                                    <td>
+                                        <span class="date-badge">NEW</span><br>
+                                        <a href="#" style="margin-top: 4px;">Mid-semester remedial exam schedule for B.E. Sem-III &amp; V announced.</a>
+                                    </td>
+                                </tr>
+                                <tr class="widget-row">
+                                    <td>
+                                        <span class="date-badge">NEW</span><br>
+                                        <a href="#" style="margin-top: 4px;">Campus recruitment drive schedule for final year students 2025-26.</a>
+                                    </td>
+                                </tr>
+                                <tr class="widget-row">
+                                    <td>
+                                        <span class="date-badge" style="background-color: #6c757d;">NOTICE</span><br>
+                                        <a href="#" style="margin-top: 4px;">Submission of dissertation titles for M.E. final year postgraduates.</a>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <!-- Dean's Profile Card Table -->
+                            <table class="widget-table">
+                                <tr>
+                                    <th class="widget-header"><i class="fa-solid fa-user-tie"></i> Administration</th>
+                                </tr>
+                                <tr class="widget-row">
+                                    <td style="text-align: center; padding: 15px;">
+                                        <i class="fa-solid fa-user-gear" style="font-size: 50px; color: #1a2b4c; margin-bottom: 8px;"></i>
+                                        <div style="font-weight: bold; color: #1a2b4c;">Prof. (Dr.) Satish Shah</div>
+                                        <div style="font-size: 12px; color: #666;">Dean, Faculty of Tech. &amp; Engg.</div>
+                                        <div style="font-size: 11px; color: #888; margin-top: 4px;">dean-fte@msubaroda.ac.in</div>
+                                    </td>
+                                </tr>
+                            </table>
+
+                        </td>
+
+                        <!-- Main Content Right Column -->
+                        <td class="main-cell">
+                            
+                            <!-- About Faculty Section -->
+                            <div class="section-box">
+                                <h3 class="section-heading"><i class="fa-solid fa-circle-info"></i> About the <span>Faculty</span></h3>
+                                <p class="about-text">
+                                    The <strong>Faculty of Technology and Engineering (FTE)</strong>, popularly known as <em>Kala Bhavan</em>, was established in June 1890 by His Highness Maharaja Sayajirao Gaekwad III of Baroda State. It is one of India's oldest and premier engineering institutions. When The Maharaja Sayajirao University of Baroda was founded in 1949, the historic Kala Bhavan Technical Institute became the Faculty of Technology and Engineering.
+                                </p>
+                                <p class="about-text">
+                                    FTE offers undergraduate (B.E.), postgraduate (M.E., MCA, M.Sc.), and doctoral (Ph.D.) degrees in modern engineering disciplines. With state-of-the-art laboratories, renowned faculty, extensive industry tie-ups, and an illustrious alumni base across the globe, FTE continues to set benchmarks in technical education and research.
+                                </p>
+                            </div>
+
+                            <!-- Departments Section Designed with HTML Table -->
+                            <div class="section-box">
+                                <h3 class="section-heading"><i class="fa-solid fa-diagram-project"></i> Academic <span>Departments</span></h3>
+                                <table class="dept-table">
+                                    <thead>
+                                        <tr>
+                                            <th width="8%">#</th>
+                                            <th width="36%">Department Name</th>
+                                            <th width="28%">Programmes Offered</th>
+                                            <th width="28%">Head of Department</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td><strong>Computer Science and Engineering</strong></td>
+                                            <td>B.E., M.E., Ph.D.</td>
+                                            <td>Prof. (Dr.) A. V. Joshi</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td><strong>Civil Engineering</strong></td>
+                                            <td>B.E., M.E. (Structure/Hydraulics), Ph.D.</td>
+                                            <td>Prof. (Dr.) N. H. Joshi</td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td><strong>Mechanical Engineering</strong></td>
+                                            <td>B.E., M.E. (Thermal/Production), Ph.D.</td>
+                                            <td>Prof. (Dr.) B. S. Patel</td>
+                                        </tr>
+                                        <tr>
+                                            <td>4</td>
+                                            <td><strong>Electrical Engineering</strong></td>
+                                            <td>B.E., M.E. (Power Systems/Control), Ph.D.</td>
+                                            <td>Prof. (Dr.) R. K. Sharma</td>
+                                        </tr>
+                                        <tr>
+                                            <td>5</td>
+                                            <td><strong>Chemical Engineering</strong></td>
+                                            <td>B.E., M.E., Ph.D.</td>
+                                            <td>Prof. (Dr.) P. S. Rao</td>
+                                        </tr>
+                                        <tr>
+                                            <td>6</td>
+                                            <td><strong>Applied Mathematics</strong></td>
+                                            <td>M.Sc. (Tech), Ph.D.</td>
+                                            <td>Prof. (Dr.) S. M. Dave</td>
+                                        </tr>
+                                        <tr>
+                                            <td>7</td>
+                                            <td><strong>Textile Engineering &amp; Chemistry</strong></td>
+                                            <td>B.E., M.E., Ph.D.</td>
+                                            <td>Prof. (Dr.) J. B. Shah</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <!-- Highlights & Achievements Table -->
+                            <div class="section-box">
+                                <h3 class="section-heading"><i class="fa-solid fa-award"></i> Key Highlights of <span>FTE</span></h3>
+                                <table width="100%" cellpadding="8" cellspacing="0" style="border: 1px solid #dcdcdc; border-collapse: collapse;">
+                                    <tr style="background-color: #f8f9fa;">
+                                        <td width="50%" style="border: 1px solid #e0e0e0; vertical-align: top;">
+                                            <strong style="color: #0088cc;"><i class="fa-solid fa-flask"></i> Research &amp; Innovation</strong>
+                                            <p style="font-size: 12px; color: #555; margin-top: 4px;">Over 50 sponsored research projects funded by DST, AICTE, ISRO, and UGC currently active in state-of-the-art labs.</p>
+                                        </td>
+                                        <td width="50%" style="border: 1px solid #e0e0e0; vertical-align: top;">
+                                            <strong style="color: #0088cc;"><i class="fa-solid fa-briefcase"></i> Placements</strong>
+                                            <p style="font-size: 12px; color: #555; margin-top: 4px;">Over 90% placement record with top recruiters including TCS, Reliance, L&amp;T, Siemens, Adani, Infosys, and Cognizant.</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: 1px solid #e0e0e0; vertical-align: top;">
+                                            <strong style="color: #0088cc;"><i class="fa-solid fa-users"></i> Student Chapters</strong>
+                                            <p style="font-size: 12px; color: #555; margin-top: 4px;">Active collegiate chapters of IEEE, CSI, ASME, IEI, and ACM hosting regular workshops, hackathons, and symposiums.</p>
+                                        </td>
+                                        <td style="border: 1px solid #e0e0e0; vertical-align: top;">
+                                            <strong style="color: #0088cc;"><i class="fa-solid fa-book-open"></i> Central Library</strong>
+                                            <p style="font-size: 12px; color: #555; margin-top: 4px;">Over 100,000 technical books, IEEE Xplore digital library access, international journals, and reading halls.</p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+
+        <!-- 6. Footer Row Designed Using Table -->
+        <tr>
+            <td colspan="2" class="footer-cell">
+                <table class="footer-table">
+                    <tr>
+                        <td width="36%">
+                            <div class="footer-col-title">About Faculty</div>
+                            <p>Faculty of Technology and Engineering (Kala Bhavan) is a premier constituent faculty of The Maharaja Sayajirao University of Baroda, fostering world-class engineering education and research since 1890.</p>
+                            <p style="margin-top: 8px;"><strong>Phone:</strong> +91-265-2434188 / 2410513</p>
+                            <p><strong>Email:</strong> info-fte@msubaroda.ac.in</p>
+                        </td>
+                        <td width="32%">
+                            <div class="footer-col-title">Campus Address</div>
+                            <p>Faculty of Technology &amp; Engineering<br>
+                            The Maharaja Sayajirao University of Baroda<br>
+                            Kala Bhavan, Post Box No. 51,<br>
+                            Dandia Bazar, Vadodara - 390001,<br>
+                            Gujarat, India.</p>
+                        </td>
+                        <td width="32%">
+                            <div class="footer-col-title">Useful University Portals</div>
+                            <p><a href="#"><i class="fa-solid fa-angle-right"></i> MSU Official Website</a></p>
+                            <p><a href="#"><i class="fa-solid fa-angle-right"></i> Examination Portal</a></p>
+                            <p><a href="#"><i class="fa-solid fa-angle-right"></i> Gujarat Common Admission Services</a></p>
+                            <p><a href="#"><i class="fa-solid fa-angle-right"></i> National Academic Depository (NAD)</a></p>
+                            <p><a href="#"><i class="fa-solid fa-angle-right"></i> MSU Digital Learning Center</a></p>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+
+        <!-- 7. Copyright Sub-Row -->
+        <tr>
+            <td colspan="2" class="copyright-cell">
+                &copy; 2026 Faculty of Technology and Engineering, The Maharaja Sayajirao University of Baroda. All Rights Reserved.
+            </td>
+        </tr>
+
+    </table>
+
+</body>
+</html>

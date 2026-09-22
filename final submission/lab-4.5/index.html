@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 4.5 - Keyboard Event Handler</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background-color 0.4s ease;
+        }
+
+        .card-box {
+            background-color: #ffffff;
+            padding: 35px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            text-align: center;
+            width: 450px;
+        }
+
+        h2 {
+            margin-top: 0;
+            color: #333;
+        }
+
+        .display-key {
+            font-size: 50px;
+            font-weight: bold;
+            color: #007bff;
+            margin: 15px 0;
+            min-height: 60px;
+        }
+
+        .info-text {
+            font-size: 16px;
+            color: #555;
+            margin: 10px 0;
+        }
+
+        .vowel-alert {
+            background-color: #ffc107;
+            color: #856404;
+            padding: 10px;
+            border-radius: 4px;
+            font-weight: bold;
+            margin-top: 15px;
+            display: none;
+        }
+    </style>
+</head>
+<body id="pageBody">
+
+    <div class="card-box">
+        <h2>Keyboard Event Handler</h2>
+        <p class="info-text">Press any key on your keyboard to test event handling.</p>
+        
+        <div class="display-key" id="keyDisplay">-</div>
+
+        <p class="info-text"><strong>Key Code:</strong> <span id="keyCodeDisplay" style="font-size: 20px; color: #d9534f; font-weight: bold;">-</span></p>
+
+        <div id="vowelAlert" class="vowel-alert">
+            🎉 Vowel is Pressed! (<span id="vowelChar"></span>)
+        </div>
+
+        <p style="font-size: 12px; color: #777; margin-top: 25px;">
+            <em>Note: When key is released, background will change to blue.</em>
+        </p>
+    </div>
+
+    <script>
+        var pageBody = document.getElementById("pageBody");
+        var keyDisplay = document.getElementById("keyDisplay");
+        var keyCodeDisplay = document.getElementById("keyCodeDisplay");
+        var vowelAlert = document.getElementById("vowelAlert");
+        var vowelChar = document.getElementById("vowelChar");
+
+        // Key Down Event Handler
+        document.addEventListener("keydown", function(event) {
+            var key = event.key;
+            var keyCode = event.keyCode || event.which;
+
+            // (i) Show Key Code
+            keyDisplay.innerText = key === " " ? "Space" : key;
+            keyCodeDisplay.innerText = keyCode;
+
+            // (ii) Check if Key is Vowel (a, e, i, o, u)
+            var lowerKey = key.toLowerCase();
+            if (lowerKey === 'a' || lowerKey === 'e' || lowerKey === 'i' || lowerKey === 'o' || lowerKey === 'u') {
+                vowelChar.innerText = key.toUpperCase();
+                vowelAlert.style.display = "block";
+            } else {
+                vowelAlert.style.display = "none";
+            }
+        });
+
+        // (iii) Key Up Event Handler: Change background to blue
+        document.addEventListener("keyup", function(event) {
+            pageBody.style.backgroundColor = "#007bff"; // Blue background on release
+        });
+    </script>
+
+</body>
+</html>
